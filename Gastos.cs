@@ -29,16 +29,38 @@ namespace Mis_Gastos
             }
             sr.Close();
             sr.Dispose();
+
+            cboConcepto.SelectedIndex = 0;
         }
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter("Gastos.txt", true);
-            sw.Write(dtpFecha.Text + " ,");
-            sw.Write(cboConcepto.Text + " ,");
-            sw.WriteLine(txtImporte.Text + ".");
-            sw.Close();
-            sw.Dispose();
+            try
+            {
+                Decimal importe = Convert.ToDecimal(txtImporte.Text);
+
+                if (importe > 0)
+                {
+                    StreamWriter sw = new StreamWriter("Gastos.txt", true);
+                    sw.Write(dtpFecha.Text + " ,");
+                    sw.Write(cboConcepto.Text + " ,");
+                    sw.WriteLine(txtImporte.Text + ".");
+                    sw.Close();
+                    sw.Dispose();
+
+                    cboConcepto.SelectedIndex = 0;
+                    txtImporte.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un valor mayor a 0", "ERROR");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Verifique los datos ingresados", "ERROR");
+            }
         }
     }
 }
