@@ -67,7 +67,7 @@ namespace Mis_Gastos
             // 
             // txtImporte
             // 
-            this.txtImporte.Location = new System.Drawing.Point(134, 114);
+            this.txtImporte.Location = new System.Drawing.Point(134, 118);
             this.txtImporte.MaxLength = 10;
             this.txtImporte.Name = "txtImporte";
             this.txtImporte.Size = new System.Drawing.Size(99, 20);
